@@ -90,7 +90,7 @@ for q1 in rates:
     TPR.append(TPRgas(q1))
 
 df61 = pd.DataFrame({
-    'rates': rates,
+    'rate': rates,
     'IPR': IPR,
     'TPR': TPR,
 })
@@ -111,10 +111,10 @@ with pd.ExcelWriter(file_out_xls) as writer:
     df61.to_excel(writer, sheet_name='Nodal Gas')
 
 fig, ax = plt.subplots(figsize=figsize)  # Create a figure containing a single axes.
-ax.plot(df61['rates'], df61['IPR'], color='k', linewidth=2, linestyle='-', label='IPR')
-ax.plot(df61['rates'], df61['TPR'], color='b', linewidth=1, linestyle='--', label='TPR')
+ax.plot(df61['rate'], df61['IPR'], color='k', linewidth=2, linestyle='-', label='IPR')
+ax.plot(df61['rate'], df61['TPR'], color='b', linewidth=1, linestyle='--', label='TPR')
 ax.plot([qop61, qop61], [0, pop61],
-        color='r', linewidth=1, linestyle=':', label=f'Operating flowrate = {qop61:.0f}  Mscf/d')
+        color='r', linewidth=1, linestyle=':', label=f'Operating flow rate = {qop61:.0f}  Mscf/d')
 ax.plot([0, qop61], [pop61, pop61],
         color='r', linewidth=1, linestyle=':', label=f'Operating bottomhole pressure = {pop61:.0f} psia')
 ax.set_title('Gas Bottom Hole Nodal Analysis')
@@ -122,7 +122,7 @@ ax.set_xlim([0.0, 2000])
 ax.set_ylim([0, 2500])
 ax.grid(True)
 ax.set_xlabel('Gas Production Rate (Mscf/d)')
-ax.set_ylabel('Bottom Hole Pressure (psia)')
+ax.set_ylabel('Bottomhole Pressure (psia)')
 ax.grid(True)
 plt.legend()
 plt.savefig(file_out_fig)
