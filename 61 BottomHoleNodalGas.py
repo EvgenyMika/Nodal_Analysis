@@ -13,7 +13,7 @@ import numpy as np
 import pandas as pd
 from scipy.optimize import fsolve
 import matplotlib.pyplot as plt
-#from Module_File import cur_date
+from Module_File import cur_date
 
 # Input Data:
 gsg = 0.65  # Gas specific gravity (gg): 0.65
@@ -101,14 +101,14 @@ pop61 = IPRgas(qop61)
 print(f'Operating flowrate = {qop61:.0f}  Mscf/d')
 print(f'Operating pressure = {pop61:.0f} psia')
 
-#print('Writing results to Excel file.')
-#curdate = cur_date()
-#path_res = f'Nodal_out'
-#file_out_xls = f'{path_res}/61 BottomHoleNodalGas-{curdate}.xlsx'
-#file_out_fig = f'{path_res}/61 BottomHoleNodalGas-{curdate}.png'
+print('Writing results to Excel file.')
+curdate = cur_date()
+path_res = f'Nodal_out'
+file_out_xls = f'{path_res}/61 BottomHoleNodalGas-{curdate}.xlsx'
+file_out_fig = f'{path_res}/61 BottomHoleNodalGas-{curdate}.png'
 
-#with pd.ExcelWriter(file_out_xls) as writer:
-#    df61.to_excel(writer, sheet_name='Nodal Gas')
+with pd.ExcelWriter(file_out_xls) as writer:
+    df61.to_excel(writer, sheet_name='Nodal Gas')
 
 fig, ax = plt.subplots(figsize=figsize)  # Create a figure containing a single axes.
 ax.plot(df61['rates'], df61['IPR'], color='k', linewidth=2, linestyle='-', label='IPR')
@@ -125,5 +125,5 @@ ax.set_xlabel('Gas Production Rate (Mscf/d)')
 ax.set_ylabel('Bottom Hole Pressure (psia)')
 ax.grid(True)
 plt.legend()
-#plt.savefig(file_out_fig)
+plt.savefig(file_out_fig)
 plt.show()
