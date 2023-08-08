@@ -7,14 +7,11 @@ Computer-Assisted Approach
 
 Chapter 6: Well Deliverability
 Example Problem 6.2
-Description: This program calculates the operating point using the Poettmann–Carpenter method with bottom-hole node.
+Description: This program calculates the operating point using the Poettmann–Carpenter method with wellhead node.
 """
 import numpy as np
 import pandas as pd
 from scipy.optimize import fsolve
-from scipy.optimize import newton
-from scipy.optimize import minimize_scalar
-
 import matplotlib.pyplot as plt
 from Module_File import cur_date
 
